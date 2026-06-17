@@ -726,7 +726,7 @@ MonoBehaviour:
     type: 3}
   bossPrefab: {fileID: 5703812565471812879, guid: 5914df82737f8498b9bc8980446e6643,
     type: 3}
-  spacingX: 0.8
+  spacingX: 1.4
   spacingZ: 1.1
   speed: 2
   distance: 1.5
