@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab; // Qui inseriremo il cubetto blu del nemico
+    public GameObject enemyPrefab; 
     public float spawnRate = 2f;    // Ogni quanti secondi nasce un nemico
     public float xLimit = 7f;       // Limite destro/sinistro per non farli nascere fuori schermo
 

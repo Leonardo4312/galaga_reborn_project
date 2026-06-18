@@ -4,10 +4,10 @@ using UnityEngine;
 public class BSODManager : MonoBehaviour
 {
     [Header("UI Element")]
-    public GameObject bsodPanel; // Il pannello blu del crash
+    public GameObject bsodPanel; 
 
     [Header("UI Vite Extra")]
-    public GameObject cuoreQuattro; // Trascina qui il Cuore_4 che abbiamo creato!
+    public GameObject cuoreQuattro; 
 
     [Header("Configurazione Trappola")]
     [Range(0f, 1f)] 
@@ -70,13 +70,13 @@ public class BSODManager : MonoBehaviour
 
         if (cuoreQuattro != null)
         {
-            cuoreQuattro.SetActive(true); // Accende VISIVAMENTE il quarto cuore sullo schermo!
+            cuoreQuattro.SetActive(true); // Accende visiamente il quarto cuore sullo schermo!
         }
 
         if (musica != null) musica.Pause();
         if (bsodPanel != null) bsodPanel.SetActive(true);
 
-        // ⏱️ MODIFICA TEMPO: Ora aspetta 4 secondi (1 in più rispetto a prima)
+        // aspetta 4 secondi
         yield return new WaitForSeconds(4f);
 
         if (bsodPanel != null) bsodPanel.SetActive(false);

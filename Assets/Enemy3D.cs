@@ -33,7 +33,7 @@ public class Enemy3D : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         // 🟢 MODIFICATO: Congela completamente la rotazione fisica.
-        // Impedisce all'alieno di girarsi su se stesso o ribaltarsi se urta qualcosa.
+        // Impedisce all'alieno di girarsi su se stesso o ribaltarsi se urta qualcosa
         if (rb != null)
         {
             rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -48,7 +48,7 @@ public class Enemy3D : MonoBehaviour
         originalParent = transform.parent;
         originalLocalPosition = transform.localPosition;
         
-        // Ci stacchiamo dalla griglia per essere indipendenti nei movimenti
+        // stacco dalla griglia per essere indipendenti nei movimenti
         transform.parent = null;
 
         // Inizializza il timer di sparo con un leggero ritardo casuale
@@ -101,13 +101,13 @@ public class Enemy3D : MonoBehaviour
         // CASO 1: L'alieno viene polverizzato dal laser del giocatore
         if (collision.gameObject.CompareTag("Laser")) 
         {
-            // 1. Chiama RegisterEnemyKill per svegliare le combo e il moltiplicatore!
+            // 1. Chiama RegisterEnemyKill per svegliare le combo e il moltiplicatore
             if (GameManager.instance != null)
             {
                 GameManager.instance.RegisterEnemyKill(scoreValue);
             }
 
-            // SCREEN SHAKE: Telecamera scossa leggermente per l'esplosione aliena!
+            // SCREEN SHAKE: Telecamera scossa leggermente per l'esplosione aliena
             if (CameraShake.instance != null)
             {
                 CameraShake.instance.TriggerShake(0.12f, 0.15f); 
@@ -119,7 +119,7 @@ public class Enemy3D : MonoBehaviour
                 Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             }
 
-            // 3. MECCANICA DROP AGGIORNATA: Ora cade sempre se il prefab è assegnato
+            // 3. MECCANICA DROP: cade sempre se il prefab è assegnato
             if (powerUpPrefab != null) 
             {
                 Instantiate(powerUpPrefab, transform.position, Quaternion.identity);

@@ -9,7 +9,7 @@ public class CameraShake : MonoBehaviour
 
     void Awake()
     {
-        // Creiamo un Singleton per poterlo chiamare da qualsiasi altro script facilmente
+        
         instance = this;
     }
 
@@ -19,7 +19,7 @@ public class CameraShake : MonoBehaviour
         originalLocalPosition = transform.localPosition;
     }
 
-    // Questa è la funzione magica da chiamare passandogli (durata, intensità)
+    
     public void TriggerShake(float duration, float magnitude)
     {
         // Ferma eventuali shake precedenti ancora in corso per non glitchare

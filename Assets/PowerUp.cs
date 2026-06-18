@@ -21,8 +21,7 @@ public class PowerUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // CERCA LO SCRIPT DELLA NAVICELLA (Controlla se il tuo script si chiama PlayerController!)
-            // Se il tuo script ha un altro nome, cambialo qui sotto al posto di PlayerController
+            
             var playerScript = other.GetComponent<PlayerGalaga>();
             
             if (playerScript != null)

@@ -12,13 +12,13 @@ public class BlinkingText : MonoBehaviour
 
     void Awake()
     {
-        // Prendiamo il componente di testo attaccato all'oggetto
+        // Prendo il componente di testo attaccato all'oggetto
         textComponent = GetComponent<TextMeshProUGUI>();
     }
 
     void OnEnable()
     {
-        // Ogni volta che il BSOD appare, resettiamo il testo visibile e facciamo partire il lampeggio
+        // Ogni volta che il BSOD appare, resetto il testo visibile e faccio partire il lampeggio
         if (textComponent != null)
         {
             textComponent.enabled = true;
@@ -28,7 +28,7 @@ public class BlinkingText : MonoBehaviour
 
     void OnDisable()
     {
-        // Quando la schermata blu scompare, fermiamo il timer per non sprecare memoria
+        // Quando la schermata blu scompare, fermo il timer per non sprecare memoria
         if (blinkCoroutine != null)
         {
             StopCoroutine(blinkCoroutine);

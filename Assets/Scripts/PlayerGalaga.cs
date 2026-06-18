@@ -23,16 +23,16 @@ public class PlayerGalaga : MonoBehaviour
 
     void Start()
     {
-        // Memorizziamo la Z di partenza per evitare che la fisica ci spinga indietro
+        // Memorizzo la Z di partenza per evitare che la fisica ci spinga indietro
         originalZ = transform.position.z;
 
-        // Recuperiamo il Rigidbody attaccato alla navicella
+        // Recupero il Rigidbody attaccato alla navicella
         rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        // 1. GESTIONE MOVIMENTO (Touch per Xiaomi / Tastiera per Mac Editor)
+        // 1. GESTIONE MOVIMENTO (Touch per smartphone / Tastiera per Mac Editor)
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -52,7 +52,7 @@ public class PlayerGalaga : MonoBehaviour
             transform.Translate(direction * speed * Time.deltaTime, Space.World);
         }
 
-        // Azzeriamo all'istante qualsiasi forza fisica accumulata da urti o esplosioni
+        // Azzero qualsiasi forza fisica accumulata da urti o esplosioni
         if (rb != null)
         {
             rb.linearVelocity = Vector3.zero;
@@ -62,10 +62,10 @@ public class PlayerGalaga : MonoBehaviour
         // 2. BLOCCO DEI BORDI (X) E ANCORAGGIO FISSO (Z)
         float clampedX = Mathf.Clamp(transform.position.x, -xLimit, xLimit);
         
-        // Forza la navicella a stare sulla sua X controllata e SEMPRE sulla Z originale
+        // Forza la navicella a stare sulla sua X controllata e sempre sulla Z originale
         transform.position = new Vector3(clampedX, transform.position.y, originalZ);
 
-        // 3. INPUT DI SPARO (Spazio su Mac / Auto-Sparo quando tocchi lo schermo sullo Xiaomi!)
+        // 3. INPUT DI SPARO (Spazio su Mac / Auto-Sparo quando tocchi lo schermo sullo smartphone)
         if ((Input.GetButton("Jump") || Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0) && Time.time > nextFireTime)
         {
             nextFireTime = Time.time + fireRate; 
@@ -93,7 +93,7 @@ public class PlayerGalaga : MonoBehaviour
         }
     }
 
-    // Questa è la funzione esatta cercata da PowerUp.cs - Errore Console Risolto!
+    
     public void ActivateDoubleLaser()
     {
         hasDoubleLaser = true;

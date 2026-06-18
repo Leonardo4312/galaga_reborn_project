@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [Header("Menu Navigation Panels")]
     public GameObject mainMenuPanel;      // Pannello 1: PLAY, STORY, OPTIONS
     public GameObject optionsMenuPanel;   // Pannello 2: MUSIC VOLUME, LANGUAGE, EXIT
-    public GameObject loginPanel;         // Pannello 3: MODULO VIOLA PLAYFAB
+    public GameObject loginPanel;         // Pannello 3: MODULO PLAYFAB
 
     [Header("Dynamic Sub-Menu Elements")]
     public GameObject volumeSlider;       
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     public RectTransform vortexTransform; 
     public TMP_Text mainMenuHighScoreText; 
 
-    [Header("Localization Texts")]
+    [Header("Localization - Main Menu")]
     public TMP_Text playBtnText;       
     public TMP_Text storyBtnText;      
     public TMP_Text optionsBtnText;    
@@ -64,7 +64,24 @@ public class GameManager : MonoBehaviour
     public TMP_Text languageBtnText;   
     public TMP_Text exitBtnText;       
 
-    private bool isItalian = false;    
+    [Header("Localization - Story")]
+    public TMP_Text storyContentText;  
+    public TMP_Text storyBackBtnText;  // 🟢 NUOVO: Il testo del pulsante "INDIETRO" della storia!
+
+    [Header("Localization - Login Panel (Aggiornato)")]
+    public TMP_Text loginBtnText;          
+    public TMP_Text signUpBtnText;         
+    public TMP_Text loginBackBtnText;      
+    public TMP_Text loginStatusText;       
+    public TMP_Text usernamePlaceholder;   
+    public TMP_Text passwordPlaceholder;   
+
+    [Header("Localization - Game Over Panel")]
+    public TMP_Text gameOverTitleText;     
+    public TMP_Text retryBtnText;          
+    public TMP_Text gameOverBackBtnText;   
+
+    [HideInInspector] public bool isItalian = false;    
 
     private GameObject playerInstance;
 
@@ -86,6 +103,9 @@ public class GameManager : MonoBehaviour
         UpdateMainMenuHighScoreUI(); 
         
         if (comboText != null) comboText.gameObject.SetActive(false);
+
+        // Imposta la lingua iniziale di default (Inglese)
+        SetLanguageToEnglish();
 
         // --- GESTIONE DEI PANNELLI ALL'AVVIO ---
         if (startFromGameplay)
@@ -123,18 +143,39 @@ public class GameManager : MonoBehaviour
         if (languageFlags != null) languageFlags.SetActive(false);
     }
 
-    // --- 🌍 SISTEMA DI TRADUZIONE DINAMICA ---
+    // --- SISTEMA DI TRADUZIONE DINAMICA ---
 
     public void SetLanguageToItalian()
     {
         isItalian = true;
 
+        // Main Menu
         if (playBtnText != null) playBtnText.text = "GIOCA";
         if (storyBtnText != null) storyBtnText.text = "STORIA";
         if (optionsBtnText != null) optionsBtnText.text = "OPZIONI";
         if (volumeBtnText != null) volumeBtnText.text = "VOL. MUSICA";
         if (languageBtnText != null) languageBtnText.text = "LINGUA";
         if (exitBtnText != null) exitBtnText.text = "ESCI";
+
+        // Storia background
+        if (storyContentText != null)
+        {
+            storyContentText.text = "L'anno è il 2026. Lo spazio profondo è sotto l'attacco di incessanti ondate di sciami alieni ostili. Come avanguardia della Flotta Stellare, controlli la navicella da combattimento definitiva della galassia. La tua missione è semplice: distruggi le formazioni nemiche, schiva i letali attacchi kamikaze e conquista il punteggio record!\n\nMa tieni gli occhi aperti, pilota... La matrice di questo settore è altamente instabile. Gira voce di glitch di sistema nascosti e segreti sepolti nel profondo...\n\nRiuscirai a sopravvivere alla più grande minaccia della galassia?";
+        }
+        if (storyBackBtnText != null) storyBackBtnText.text = "INDIETRO"; // 🟢 Tradotto!
+
+        // Login Panel
+        if (loginBtnText != null) loginBtnText.text = "ACCEDI";
+        if (signUpBtnText != null) signUpBtnText.text = "REGISTRATI";
+        if (loginBackBtnText != null) loginBackBtnText.text = "INDIETRO";
+        if (usernamePlaceholder != null) usernamePlaceholder.text = "NOME UTENTE";
+        if (passwordPlaceholder != null) passwordPlaceholder.text = "PASSWORD";
+        if (loginStatusText != null) loginStatusText.text = "In attesa di credenziali...";
+
+        // Game Over Panel
+        if (gameOverTitleText != null) gameOverTitleText.text = "PARTITA FINITA";
+        if (retryBtnText != null) retryBtnText.text = "RIPROVA";
+        if (gameOverBackBtnText != null) gameOverBackBtnText.text = "MENU PRINCIPALE";
 
         UpdateScoreUI();
         UpdateMainMenuHighScoreUI();
@@ -144,6 +185,7 @@ public class GameManager : MonoBehaviour
     {
         isItalian = false;
 
+        // Main Menu
         if (playBtnText != null) playBtnText.text = "PLAY";
         if (storyBtnText != null) storyBtnText.text = "STORY";
         if (optionsBtnText != null) optionsBtnText.text = "OPTIONS";
@@ -151,15 +193,34 @@ public class GameManager : MonoBehaviour
         if (languageBtnText != null) languageBtnText.text = "LANGUAGE";
         if (exitBtnText != null) exitBtnText.text = "EXIT";
 
+        // Storia background
+        if (storyContentText != null)
+        {
+            storyContentText.text = "The year is 2026. Deep space is under attack by relentless waves of hostile alien swarms. As the vanguard of the Starfleet, you control the galaxy's ultimate fighter ship. Your mission is simple: blast through enemy formations, dodge deadly kamikaze dives, and claim the ultimate high score!\n\nBut keep your eyes peeled, pilot... This sector matrix is highly unstable. Rumors speak of hidden system glitches and secrets buried deep within.\n\nCan you survive the galaxy's greatest secret?";
+        }
+        if (storyBackBtnText != null) storyBackBtnText.text = "BACK"; 
+
+        // Login Panel
+        if (loginBtnText != null) loginBtnText.text = "LOGIN";
+        if (signUpBtnText != null) signUpBtnText.text = "SIGN-UP";
+        if (loginBackBtnText != null) loginBackBtnText.text = "BACK";
+        if (usernamePlaceholder != null) usernamePlaceholder.text = "USERNAME";
+        if (passwordPlaceholder != null) passwordPlaceholder.text = "PASSWORD";
+        if (loginStatusText != null) loginStatusText.text = "Awaiting credentials...";
+
+        // Game Over Panel
+        if (gameOverTitleText != null) gameOverTitleText.text = "GAME OVER";
+        if (retryBtnText != null) retryBtnText.text = "RETRY";
+        if (gameOverBackBtnText != null) gameOverBackBtnText.text = "MAIN MENU";
+
         UpdateScoreUI();
         UpdateMainMenuHighScoreUI();
     }
 
-    // --- 🕹️ FLUSSO DI NAVIGAZIONE CON LOADING ---
+    // --- FLUSSO DI NAVIGAZIONE CON LOADING ---
 
     public void ClickPlayInMainMenu()
     {
-        // 🟢 MODIFICATO: Ora anche cliccando PLAY parte il caricamento di 5 secondi prima del login!
         StartCoroutine(LoadingRoutine(loginPanel));
     }
 
@@ -250,13 +311,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // --- 🔊 CONTROLLO AUDIO SLIDER ---
+    // --- CONTROLLO AUDIO SLIDER ---
     public void SetMasterVolume(float value)
     {
         AudioListener.volume = value;
     }
 
-    // --- 💰 SISTEMA DI PUNTEGGIO ---
+    // --- SISTEMA DI PUNTEGGIO ---
     public void AddScore(int points)
     {
         score += points;
@@ -277,12 +338,12 @@ public class GameManager : MonoBehaviour
     {
         if (mainMenuHighScoreText != null) 
         {
-            string label = isItalian ? "RECORD  " : "HI-SCORE  ";
+            string label = isItalian ? "RECORD  " : "HIGH-SCORE  ";
             mainMenuHighScoreText.text = label + highScore.ToString("D9");
         }
     }
 
-    // --- 💥 SISTEMA DI COMBO ---
+    // --- SISTEMA DI COMBO ---
     public void RegisterEnemyKill(int basePoints)
     {
         comboCount++; 

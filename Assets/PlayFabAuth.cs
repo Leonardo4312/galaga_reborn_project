@@ -45,7 +45,7 @@ public class PlayFabAuth : MonoBehaviour
         {
             Username = usernameInput.text,
             Password = passwordInput.text,
-            RequireBothUsernameAndEmail = false // Disattiviamo l'email obbligatoria per fare i test veloci in sede d'esame
+            RequireBothUsernameAndEmail = false
         };
 
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnRegisterFailure);

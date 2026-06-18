@@ -74,7 +74,7 @@ public class GridManager : MonoBehaviour
         // Resetta la posizione del manager al centro per la nuova griglia
         transform.position = startPosition;
 
-        // Fai nascere la nuova armata!
+        // Fai nascere la nuova armata
         GenerateGrid();
 
         isTransitioning = false;

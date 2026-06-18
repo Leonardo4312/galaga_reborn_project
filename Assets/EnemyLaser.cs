@@ -23,7 +23,7 @@ public class EnemyLaser : MonoBehaviour
         {
             Destroy(gameObject);           // Il laser si distrugge
             
-            // 🟢 AGGIORNATO: Aggiunto null-check di sicurezza sul GameManager
+            //  Aggiunto null-check di sicurezza sul GameManager
             if (GameManager.instance != null)
             {
                 GameManager.instance.PlayerHit();
