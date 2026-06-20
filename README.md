@@ -1,6 +1,6 @@
 # Galaga Reborn
 
-**Galaga Reborn** is a 2D/3D arcade-style retro space shooter. Developed using **Unity 6**, the game pays homage to classic arcade shoot-'em-ups while introducing modern mobile mechanics, secure online integration, and an intense scoring system.
+**Galaga Reborn** is a 2D arcade-style retro space shooter. Developed using **Unity 6**, the game pays homage to classic arcade shoot-'em-ups while introducing modern mobile mechanics, secure online integration, and an intense scoring system.
 
 ## Gameplay
 The year is 2026. Deep space is under attack by relentless waves of hostile alien swarms. As the vanguard of the Starfleet, you control the galaxy's ultimate fighter ship. Your mission is simple: blast through enemy formations, dodge deadly kamikaze dives, activate powerful weapon upgrades, and claim the ultimate high score!
